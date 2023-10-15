@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { getOneLog, updateLog } from "../api/fetch";
 
 function LogEditForm() {
   let { index } = useParams();
-
   const [log, setLog] = useState({
     captainName: "",
     title: "",
@@ -11,6 +11,17 @@ function LogEditForm() {
     mistakesWereMadeToday: false,
     daysSinceLastCrisis: 0,
   });
+  const nav = useNavigate();
+
+  useEffect(() => {
+    getOneLog(index)
+      .then((logData) =>{
+        setLog(logData);
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  },[index]);
 
   const handleTextChange = (event) => {
     setLog({ ...log, [event.target.id]: event.target.value });
@@ -24,6 +35,12 @@ function LogEditForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    updateLog(index, log).then(() => {
+                                        console.log("fetch success.");
+                                        alert(`${index} is updated successfully.`);
+                                        nav(`/logs/${index}`);
+                                      }
+                        ).catch((err) => console.error(err));
   };
 
   return (

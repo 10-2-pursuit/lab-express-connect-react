@@ -5,6 +5,8 @@ import Index from './pages/Index';
 import New from './pages/New';
 import Edit from './pages/Edit';
 import Show from './pages/Show';
+import FourOFour from "./pages/FourOFour";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (

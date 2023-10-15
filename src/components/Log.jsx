@@ -13,9 +13,9 @@ function Log({ log, index }) {
         )}
       </td>
       <td style={{ cursor: "alias" }}>
-        <a href={bookmark.url} target="_blank" rel="noreferrer">
+        <Link to={`/logs/${index}`}>
           {log.captainName}
-        </a>
+        </Link>
       </td>
       <td>
         <Link to={`/logs/${index}`}>✏️</Link>
@@ -24,4 +24,4 @@ function Log({ log, index }) {
   );
 }
 
-export default Bookmark;
+export default Log;

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import { createLog } from "../api/fetch";
 
 function LogNewForm() {
   const [log, setLog] = useState({
@@ -8,6 +10,7 @@ function LogNewForm() {
     mistakesWereMadeToday: false,
     daysSinceLastCrisis: 0,
   });
+  const nav = useNavigate();
 
   const handleTextChange = (event) => {
     setLog({ ...log, [event.target.id]: event.target.value });
@@ -19,6 +22,10 @@ function LogNewForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    createLog(log).then(() => {
+      console.log("create success");
+      nav('/logs');
+    }).catch((err)=>console.error(err));
   };
 
   return (

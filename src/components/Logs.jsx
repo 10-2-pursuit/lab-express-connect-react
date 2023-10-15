@@ -1,8 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Log from "./Log.jsx";
+import { getAllLogs } from "../api/fetch.js";
 
 function Logs() {
-  const [logs] = useState([]);
+  const [logs, setLogs] = useState([]);
+
+  useEffect(() => {
+    // we need to get data 
+    getAllLogs()
+      .then((logsJson) => {
+        console.log(logsJson)
+        setLogs(logsJson);
+      })
+      .catch((err)=> {console.error(err);
+  })},[]);
 
   return (
     <div className="Logs">
