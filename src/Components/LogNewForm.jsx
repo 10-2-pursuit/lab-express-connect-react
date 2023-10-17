@@ -46,9 +46,9 @@ function LogNewForm() {
   return (
     <div className="New">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="captainName">Name:</label>
         <input
-          id="name"
+          id="captainName"
           value={log.captainName}
           type="text"
           onChange={handleTextChange}
@@ -78,9 +78,9 @@ function LogNewForm() {
           type="checkbox"
           checked={log.mistakesWereMadeToday}
         />
-        <label htmlFor="crisis">Days since Last Crisis:</label>
+        <label htmlFor="daysSinceLastCrisis">Days since Last Crisis:</label>
         <input
-          id="crisis"
+          id="daysSinceLastCrisis"
           value={log.daysSinceLastCrisis}
           type="number"
           placeholder="#"

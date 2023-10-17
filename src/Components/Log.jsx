@@ -2,22 +2,25 @@ import { Link } from "react-router-dom";
 
 function Log({ log, index }) {
   return (
-    <tr>
+    
+   
+    <tr  >
       <td>
-        <h6>Mistakes made today:</h6>
+        <Link to={`/logs/${index}`}>☠️{log.captainName} </Link>
+      </td>
+      <td>
+        <h6>Mistakes today:</h6>
         {log.mistakesWereMadeToday ? (
-          <span>⭐️</span>
+          <span>❎</span>
         ) : (
-          <span>&nbsp; &nbsp; &nbsp;</span>
+          <span>✅</span>
+          //<span>&nbsp; &nbsp; &nbsp;</span>
         )}
       </td>
-      <td style={{ cursor: "alias" }}>
-          {log.captainName}
-      </td>
-      <td>
-        <Link to={`/logs/${index}`}>✏️{log.captainName} </Link>
-      </td>
+      
     </tr>
+
+    
   );
 }
 

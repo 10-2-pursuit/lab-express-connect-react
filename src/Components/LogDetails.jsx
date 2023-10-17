@@ -31,17 +31,27 @@ function LogDetails() {
   return (
     <article>
       <h3>
-        {log.mistakesWereMadeToday ? <span>⭐️</span> : null} {log.captainName}
+         {log.captainName}
+         {log.mistakesWereMadeToday ? (
+          <span>❎</span>
+        ) : (
+          <span>✅</span>
+        )}
       </h3>
 
       <h6>
-        {log.title}
+        Also know as (AKA):  {log.title}
       </h6>
-      <p>
+      <p style={{fontStyle:'italic'}}>
+        Quoted as:
         {log.post}
       </p>
       <div>
-        <p>Were mistakes made today:{log.mistakesWereMadeToday}</p>
+        <p>mistakes today:{log.mistakesWereMadeToday ? (
+          <span>Mistakes were made today!!</span>
+        ) : (
+          <span>No mistakes today.</span>
+        )}</p>
         <p>Days Since Last Crisis:{log.daysSinceLastCrisis}</p>
       </div>
 

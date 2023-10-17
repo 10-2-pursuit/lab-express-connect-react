@@ -11,11 +11,18 @@ function LogEditForm() {
     title: "",
     post: "",
     mistakesWereMadeToday: false,
-    daysSinceLastCrisis: 0
+    daysSinceLastCrisis: 0,
   })
   
   const handleTextChange = (event) => {
-    setLog({ ...log, [event.target.id]: event.target.value })
+    if(event.target.id !== "daysSinceLastCrisis"){
+        console.log(String(event.target.value), "hi1")
+        setLog({ ...log, [event.target.id]: event.target.value })
+    }
+    else{
+        console.log(String(event.target.value),"hi2")
+        setLog({ ...log, [event.target.id]: Number(event.target.value) })
+    }
   }
 
   const handleCheckboxChange = () => {
@@ -43,7 +50,7 @@ function LogEditForm() {
 
       fetch(`${API}/logs/${index}`, httpOptions)
         .then(() => { 
-          alert(`${log.name} has been updated!`);
+          alert(`${log.captainName} has been updated!`);
           navigate(`/logs/${index}`)
         })
         .catch((err) => console.error(err))
@@ -55,9 +62,9 @@ function LogEditForm() {
   return (
     <div className="Edit">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="captainName">Name:</label>
         <input
-          id="name"
+          id="captainName"
           value={log.captainName}
           type="text"
           onChange={handleTextChange}
@@ -87,9 +94,9 @@ function LogEditForm() {
           type="checkbox"
           checked={log.mistakesWereMadeToday}
         />
-        <label htmlFor="crisis">Days since Last Crisis:</label>
+        <label htmlFor="daysSinceLastCrisis">Days since Last Crisis:</label>
         <input
-          id="crisis"
+          id="daysSinceLastCrisis"
           value={log.daysSinceLastCrisis}
           type="number"
           placeholder="#"

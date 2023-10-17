@@ -14,17 +14,16 @@ function Logs() {
   }, [])
 
   return (
-    <div className="Logs">
-      <section>
-        <table>
-          <thead>
-            <tr>
+    <div className="Logs"style={{textAlign:'center'}} >
+      <section >
+        <table >
+          <thead >
+            <tr >
               <th></th>
-              <th>Take me there</th>
-              <th>See this log</th>
+              <th >Choose Pirate:</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {logs.map((log, index) => {
               return <Log key={index} log={log} index={index} />;
             })}
