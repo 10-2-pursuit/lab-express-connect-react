@@ -12,10 +12,10 @@ function Log({ log, index }) {
         )}
       </td>
       <td style={{ cursor: "alias" }}>
-          {log[index].captainName}
+          {log.captainName}
       </td>
       <td>
-        <Link to={`/logs/${index}`}>✏️{log[index].captainName} </Link>
+        <Link to={`/logs/${index}`}>✏️{log.captainName} </Link>
       </td>
     </tr>
   );

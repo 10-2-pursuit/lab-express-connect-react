@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useParams, useNavigate } from "react-router-dom"
-const API = import.meta.env.VITE_API_URL
+const API = "http://localhost:8080"
 
 function LogDetails() {
   const [log, setLog] = useState([])

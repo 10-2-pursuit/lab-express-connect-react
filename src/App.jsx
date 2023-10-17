@@ -1,8 +1,8 @@
 
-import {browserRouter as Router, Routes, Route} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import Edit from "./Pages/Edit"
-import FourOFour from "./Paes/FourOFour"
+import FourOFour from "./Pages/FourOFour"
 import Home from "./Pages/Home"
 import Index from "./Pages/Index"
 import New from "./Pages/New"
@@ -18,10 +18,10 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element ={<Home />} />
-            <Route path="/colors" element={<Index />} />
-            <Route path="/colors/new" element={<New />} />
-            <Route path="/colors/:index" element={<Show />} />
-            <Route path="/colors/:index/edit" element={<Edit />} />
+            <Route path="/logs" element={<Index />} />
+            <Route path="/logs/new" element={<New />} />
+            <Route path="/logs/:index" element={<Show />} />
+            <Route path="/logs/:index/edit" element={<Edit />} />
             <Route path="*" element={<FourOFour />} />
           </Routes>
         </main>

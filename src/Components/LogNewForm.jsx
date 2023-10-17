@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-const API = import.meta.env.VITE_API_URL
+import { useState } from "react"
+//import { Link, useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
+const API = "http://localhost:8080"
 
 function LogNewForm() {
   const [log, setLog] = useState({
@@ -11,13 +12,13 @@ function LogNewForm() {
     daysSinceLastCrisis: 0
   })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const handleTextChange = (event) => {
-    setBookmark({ ...log, [event.target.id]: event.target.value });
+    setLog({ ...log, [event.target.id]: event.target.value });
   };
 
   const handleCheckboxChange = () => {
-    setBookmark({ ...log, mistakesWereMadeToday: !log.mistakesWereMadeToday });
+    setLog({ ...log, mistakesWereMadeToday: !log.mistakesWereMadeToday });
   };
 
   const addLog = () => {

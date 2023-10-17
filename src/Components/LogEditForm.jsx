@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-const API = import.meta.env.VITE_API_URL
+import { useState, useEffect } from "react"
+import { useParams, useNavigate, Link } from "react-router-dom"
+const API = "http://localhost:8080"
 
 
 function LogEditForm() {
-  let { index } = useParams();
-  const navigate = useNavigate(); 
+  let { index } = useParams()
+  const navigate = useNavigate()
   const [log, setLog] = useState({
     captainName: "",
     title: "",
@@ -27,7 +27,7 @@ function LogEditForm() {
       .then(response => response.json())
       .then(log => {
         console.log(log)
-        setBookmark(log)
+        setLog(log)
     })
     .catch(() => navigate("/not-found"))
   }, [index, navigate]);

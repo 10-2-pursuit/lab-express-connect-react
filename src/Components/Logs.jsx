@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import Log from "./Log";
-const API = import.meta.env.VITE_API_URL
+const API = "http://localhost:8080"
 
+console.log(API)
 
 function Logs() {
   const [logs, setLogs] = useState([]);
   useEffect(()=> {
-    fetch(`${API}/bookmarks`)
+    fetch(`${API}/logs`)
     .then((response) => response.json())
     .then( logs => setLogs(logs))
     .catch(error => console.log(error))
