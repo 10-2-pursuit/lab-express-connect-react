@@ -1,11 +1,8 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 const API = import.meta.env.VITE_API_URL
 
-
-function LogEditForm() {
-  let { index } = useParams();
-  const navigate = useNavigate(); 
+function LogNewForm() {
   const [log, setLog] = useState({
     captainName: "",
     title: "",
@@ -13,47 +10,40 @@ function LogEditForm() {
     mistakesWereMadeToday: false,
     daysSinceLastCrisis: 0
   })
-  
+
+  const navigate = useNavigate();
   const handleTextChange = (event) => {
-    setLog({ ...log, [event.target.id]: event.target.value })
-  }
+    setBookmark({ ...log, [event.target.id]: event.target.value });
+  };
 
   const handleCheckboxChange = () => {
-    setLog({ ...log, mistakesWereMadeToday: !log.mistakesWereMadeToday })
-  }
+    setBookmark({ ...log, mistakesWereMadeToday: !log.mistakesWereMadeToday });
+  };
 
-  useEffect(() => {
-    fetch(`${API}/logs/${index}`)
-      .then(response => response.json())
-      .then(log => {
-        console.log(log)
-        setBookmark(log)
-    })
-    .catch(() => navigate("/not-found"))
-  }, [index, navigate]);
-
-  const updateLog = () => {
+  const addLog = () => {
     const httpOptions = {
-      "method" : "PUT",
+      "method" : "POST",
       "body" : JSON.stringify(log),
       "headers" : {
         "Content-type" : "application/json"
       }
     }
+    fetch(`${API}/logs`, httpOptions)
+      .then((res) => {
+        console.log(res)
+        alert(`${log.captainName} was added to the database!`);
+        navigate('/logs');
+      })
+      .catch((err) => console.error(err))
+  }
 
-      fetch(`${API}/logs/${index}`, httpOptions)
-        .then(() => { 
-          alert(`${log.name} has been updated!`);
-          navigate(`/logs/${index}`)
-        })
-        .catch((err) => console.error(err))
-  }
   const handleSubmit = (event) => {
+    // this prevents the PAGE from RELOADING;
     event.preventDefault();
-    updateLog();
-  }
+    addLog();
+  };
   return (
-    <div className="Edit">
+    <div className="New">
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input
@@ -98,11 +88,8 @@ function LogEditForm() {
         <br />
         <input type="submit" />
       </form>
-      <Link to={`/logs/${index}`}>
-        <button>Nevermind!</button>
-      </Link>
     </div>
   )
 }
 
-export default LogEditForm
+export default LogNewForm

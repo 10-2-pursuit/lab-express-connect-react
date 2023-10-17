@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { Link, useParams, useNavigate } from "react-router-dom"
-
 const API = import.meta.env.VITE_API_URL
 
 function LogDetails() {
