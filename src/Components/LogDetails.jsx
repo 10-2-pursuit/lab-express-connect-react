@@ -11,7 +11,7 @@ function LogDetails() {
     fetch(`${API}/logs/${index}`)
     .then(response => response.json())
     .then(log => {
-      console.log(log)
+      //console.log(log)
       setLog(log)
     })
     .catch(() => navigate("/not-found"))
@@ -21,8 +21,8 @@ function LogDetails() {
     const httpOptions = {"method" : "DELETE"}
     fetch(`${API}/logs/${index}`, httpOptions)
       .then((res) => {
-        console.log(res)
-        alert("hey - log was deleted!  Way to GO!");
+        //console.log(res)
+        //alert("hey - log was deleted!  Way to GO!");
         navigate('/logs');
       })
       .catch((err) => console.error(err))
@@ -40,7 +40,7 @@ function LogDetails() {
       </h3>
 
       <h6>
-        Also know as (AKA):  {log.title}
+        title:  {log.title} - By {log.captainName}
       </h6>
       <p style={{fontStyle:'italic'}}>
         Quoted as:
@@ -52,7 +52,7 @@ function LogDetails() {
         ) : (
           <span>No mistakes today.</span>
         )}</p>
-        <p>Days Since Last Crisis:{log.daysSinceLastCrisis}</p>
+        <p>Days since last crisis: {log.daysSinceLastCrisis}</p>
       </div>
 
 

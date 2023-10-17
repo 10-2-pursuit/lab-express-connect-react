@@ -33,7 +33,7 @@ function LogEditForm() {
     fetch(`${API}/logs/${index}`)
       .then(response => response.json())
       .then(log => {
-        console.log(log)
+        //console.log(log)
         setLog(log)
     })
     .catch(() => navigate("/not-found"))
@@ -50,7 +50,7 @@ function LogEditForm() {
 
       fetch(`${API}/logs/${index}`, httpOptions)
         .then(() => { 
-          alert(`${log.captainName} has been updated!`);
+          //alert(`${log.captainName} has been updated!`);
           navigate(`/logs/${index}`)
         })
         .catch((err) => console.error(err))
@@ -62,13 +62,13 @@ function LogEditForm() {
   return (
     <div className="Edit">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="captainName">Name:</label>
+        <label htmlFor="captainName">Captain's Name:</label>
         <input
           id="captainName"
           value={log.captainName}
           type="text"
           onChange={handleTextChange}
-          placeholder="Captain's Name"
+          placeholder={log.captainName}
           required
         />
         <label htmlFor="title">Title:</label>
@@ -87,14 +87,14 @@ function LogEditForm() {
           placeholder="favorite quote"
           onChange={handleTextChange}
         />
-        <label htmlFor="mistakes">Were mistakes made today:</label>
+        <label htmlFor="mistakesWereMadeToday">Mistakes were made today:</label>
         <input
-          id="mistakes"
-          onChange={handleCheckboxChange}
+          id="mistakesWereMadeToday"
           type="checkbox"
           checked={log.mistakesWereMadeToday}
+          onChange={handleCheckboxChange}
         />
-        <label htmlFor="daysSinceLastCrisis">Days since Last Crisis:</label>
+        <label htmlFor="daysSinceLastCrisis">Days Since Last Crisis:</label>
         <input
           id="daysSinceLastCrisis"
           value={log.daysSinceLastCrisis}
@@ -108,6 +108,12 @@ function LogEditForm() {
       <Link to={`/logs/${index}`}>
         <button>Nevermind!</button>
       </Link>
+      <div>
+          {" "}
+          <Link to={`/logs`}>
+            <button>Back</button>
+          </Link>
+      </div>
     </div>
   )
 }

@@ -6,7 +6,7 @@ function Log({ log, index }) {
    
     <tr  >
       <td>
-        <Link to={`/logs/${index}`}>☠️{log.captainName} </Link>
+        <Link to={`/logs/${index}`}> ☠️ {log.captainName} </Link>
       </td>
       <td>
         <h6>Mistakes today:</h6>

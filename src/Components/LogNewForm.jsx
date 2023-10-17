@@ -1,6 +1,6 @@
 import { useState } from "react"
 //import { Link, useParams, useNavigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 const API = "http://localhost:8080"
 
 function LogNewForm() {
@@ -31,8 +31,8 @@ function LogNewForm() {
     }
     fetch(`${API}/logs`, httpOptions)
       .then((res) => {
-        console.log(res)
-        alert(`${log.captainName} was added to the database!`);
+        //console.log(res)
+        //alert(`${log.captainName} was added to the database!`);
         navigate('/logs');
       })
       .catch((err) => console.error(err))
@@ -46,7 +46,7 @@ function LogNewForm() {
   return (
     <div className="New">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="captainName">Name:</label>
+        <label htmlFor="captainName">Captain's Name:</label>
         <input
           id="captainName"
           value={log.captainName}
@@ -71,14 +71,14 @@ function LogNewForm() {
           placeholder="favorite quote"
           onChange={handleTextChange}
         />
-        <label htmlFor="mistakes">Were mistakes made today:</label>
+        <label htmlFor="mistakesWereMadeToday">Mistakes were made today:</label>
         <input
-          id="mistakes"
-          onChange={handleCheckboxChange}
+          id="mistakesWereMadeToday"
           type="checkbox"
           checked={log.mistakesWereMadeToday}
+          onChange={handleCheckboxChange}
         />
-        <label htmlFor="daysSinceLastCrisis">Days since Last Crisis:</label>
+        <label htmlFor="daysSinceLastCrisis">Days Since Last Crisis :</label>
         <input
           id="daysSinceLastCrisis"
           value={log.daysSinceLastCrisis}
@@ -89,6 +89,12 @@ function LogNewForm() {
         <br />
         <input type="submit" />
       </form>
+      <div>
+          {" "}
+          <Link to={`/logs`}>
+            <button>Delete</button>
+          </Link>
+      </div>
     </div>
   )
 }
