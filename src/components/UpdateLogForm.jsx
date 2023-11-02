@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './UpdateLogForm.css'; // Import the CSS file
 
-export default function UpdateLogForm({ id }) {
+function UpdateLogForm({ id }) {
   const [updatedLog, setUpdatedLog] = useState({
     captainName: '',
     title: '',
@@ -8,23 +10,21 @@ export default function UpdateLogForm({ id }) {
     mistakesWereMadeToday: false,
     daysSinceLastCrisis: 0,
   });
-  const API_URL = `http://localhost:8888/logs/${id}`; // Replace with your API endpoint
+  const API_URL = `http://localhost:8888/logs/${id}`;
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch the specific log data to populate the form
     fetch(API_URL)
       .then((response) => response.json())
       .then((data) => {
-        // Check if data is valid, and then set the updatedLog state
         if (data && typeof data === 'object') {
-          setUpdatedLog(data); // Initialize with the data from the specific log
+          setUpdatedLog(data);
         }
       })
       .catch((error) => console.error('Error fetching log:', error));
   }, [API_URL]);
 
   const handleUpdate = () => {
-    // Make a PUT request to update the specific log
     fetch(API_URL, {
       method: 'PUT',
       headers: {
@@ -35,11 +35,13 @@ export default function UpdateLogForm({ id }) {
       .then((response) => response.json())
       .then((data) => {
         console.log('Log updated successfully:', data);
-        // Redirect to the log's details page or another location
-        // Replace window.location.href with your preferred routing logic
-        window.location.href = `/logs/${id}`;
+        navigate(`/logs/${id}`);
       })
       .catch((error) => console.error('Error updating log:', error));
+  };
+
+  const handleCancel = () => {
+    navigate(`/logs/${id}`);
   };
 
   const handleInputChange = (event) => {
@@ -53,9 +55,9 @@ export default function UpdateLogForm({ id }) {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Edit Log</h1>
-      <form>
+      <form className="form">
         <label>Captain's Name:</label>
         <input
           type="text"
@@ -92,7 +94,16 @@ export default function UpdateLogForm({ id }) {
           onChange={handleInputChange}
         />
       </form>
-      <button onClick={handleUpdate}>Update Log</button>
+      <div className="button-container">
+        <button className="update-button" onClick={handleUpdate}>
+          Update Log
+        </button>
+        <button className="cancel-button" onClick={handleCancel}>
+          Cancel
+        </button>
+      </div>
     </div>
   );
 }
+
+export default UpdateLogForm;

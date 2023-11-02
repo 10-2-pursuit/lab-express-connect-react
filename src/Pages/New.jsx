@@ -1,12 +1,23 @@
 import NewLogForm from "../components/NewLogForm";
 
-function New() {
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  textAlign: 'center',
+};
+
+const h2Style = {
+  textDecoration: 'underline',
+};
+
+function Edit() {
   return (
-    <div className="New">
-      <h2>New</h2>
+    <div className="New Log" style={containerStyle}>
+      <h2 style={h2Style}>New</h2>
       <NewLogForm />
     </div>
   );
 }
 
-export default New;
+export default Edit;

@@ -1,0 +1,40 @@
+.LogShowPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .log-image {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+  }
+  
+  button {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .go-back-button {
+    background-color: #1E90FF; /* Change the color for the Go Back button */
+  }
+  
+  .edit-button {
+    background-color: blue; /* Reset the color for the Edit button */
+  }
+  
+  .delete-button {
+    background-color: red; /* Change the color for the Delete button */
+  }
+  
