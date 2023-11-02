@@ -2,6 +2,7 @@
   "name": "starter",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
@@ -9,8 +10,9 @@
     "axios": "^0.24.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
-    "react-router-dom": "^6.0.2",
+    "vite": "^4.4.11",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -41,5 +43,10 @@
     "cypress": "^9.7.0",
     "cypress-react-selector": "^3.0.0",
     "cypress-watch-and-reload": "^1.10.3"
-  }
+  },
+  "description": "[![Pursuit Logo](https://avatars1.githubusercontent.com/u/5825944?s=200&v=4)](https://pursuit.org)",
+  "main": "index.jsx",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

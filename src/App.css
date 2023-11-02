@@ -1,0 +1,29 @@
+h1 {
+    text-align: center;
+    color: red;
+    font-size: 50px;
+    font-family: fantasy; 
+    font-weight: bold;
+    text-decoration: underline;  
+}
+
+h3 { 
+    color: 'blue'; 
+    font-weight: 'bold' 
+}
+
+
+.title {
+    text-align: center;
+    text-decoration:underline;
+    color: red;
+    font-size: 50px;
+}
+
+button {
+    align-content: center;
+}
+
+.crisis .mistakes {
+    display: inline-block;
+}
