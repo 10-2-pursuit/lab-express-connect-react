@@ -17,10 +17,10 @@ export default function UpdateLogForm({ id }) {
       .then((data) => {
         // Check if data is valid, and then set the updatedLog state
         if (data && typeof data === 'object') {
-          setUpdatedLog(data);
+          setUpdatedLog(data); // Initialize with the data from the specific log
         }
       })
-      .catch((error) =>console.error('Error fetching log:', error));
+      .catch((error) => console.error('Error fetching log:', error));
   }, [API_URL]);
 
   const handleUpdate = () => {

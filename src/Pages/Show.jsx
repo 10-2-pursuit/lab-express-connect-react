@@ -4,15 +4,16 @@ import { useNavigate } from 'react-router-dom';
 
 function Show() {
   const { id } = useParams();
+  const logId = parseInt(id, 10) - 1; // Adjust the ID to match your 1-based indices
   const [log, setLog] = useState(null);
 
   useEffect(() => {
     // Fetch the log details based on the ID
-    fetch(`http://localhost:8888/logs/${id}`)
+    fetch(`http://localhost:8888/logs/${logId}`)
       .then((response) => response.json())
       .then((log) => setLog(log))
       .catch((error) => console.error('Error fetching log:', error));
-  }, [id]); // Execute this effect whenever the ID changes
+  }, [logId]);
 
   const navigate = useNavigate();
 
@@ -23,8 +24,7 @@ function Show() {
   const handleDelete = () => {
     const httpOptions = { method: "DELETE" };
 
-    // We know we need to delete a specific resource
-    fetch(`http://localhost:8888/logs/${id}`, httpOptions)
+    fetch(`http://localhost:8888/logs/${logId}`, httpOptions)
       .then((res) => {
         console.log(res);
         alert("Hey - log was deleted! Way to go!");
@@ -40,10 +40,11 @@ function Show() {
   return (
     <div className="LogShowPage">
       <h2>Log Details</h2>
+      <img src={`../assets/${log.captainName}.jpg`} alt={log.title} />
       <h3>Captain's Name: {log.captainName}</h3>
       <p>Title: {log.title}</p>
       <p>Post: {log.post}</p>
-      <p>Mistakes Were Made Today: {log.mistakesWereMadeToday ? 'Yes' : 'No'}</p>
+      <p>Mistakes Were Made Today: {log.mistakesWereMadeToday ? <span role="img" aria-label="Fire">🔥</span> : 'No'}</p>
       <p>Days Since Last Crisis: {log.daysSinceLastCrisis}</p>
       <Link to="/logs">
         <button>Go Back</button>
