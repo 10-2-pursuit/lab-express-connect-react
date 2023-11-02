@@ -4,6 +4,7 @@
   },
   "env": {
     "URL": "http://localhost:3000",
-    "API": "http://localhost:9000"
-  }
+    "API": "http://localhost:8888"
+  },
+  "projectId": "ddv7af"
 }
